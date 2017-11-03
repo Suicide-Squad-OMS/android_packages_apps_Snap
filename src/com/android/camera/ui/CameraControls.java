@@ -71,6 +71,7 @@ public class CameraControls extends RotatableLayout {
     private ArrowTextView mRefocusToast;
     private View mFrontBackSwitcher;
     private View mMenu;
+    private View mHdrSwitcher;
 
     private ViewGroup mTopBar;
     private ViewGroup mBottomBar;
@@ -170,6 +171,9 @@ public class CameraControls extends RotatableLayout {
         mVideoShutter.setClickable(enable);
         mTopBar.setEnabled(enable);
         mBottomBar.setEnabled(enable);
+        if (mHdrSwitcher.getVisibility() == View.VISIBLE) {
+            mHdrSwitcher.setEnabled(enable);
+        }
     }
 
     public void removeFromViewList(View view) {
@@ -203,6 +207,7 @@ public class CameraControls extends RotatableLayout {
         mHistogramView = (HistogramView) findViewById(R.id.histogram);
         mFrontBackSwitcher = findViewById(R.id.front_back_switcher);
         mMenu = findViewById(R.id.menu);
+        mHdrSwitcher = findViewById(R.id.hdr_switcher);
 
         if (!TsMakeupManager.HAS_TS_MAKEUP) {
             mTopBar.removeView(mTsMakeupSwitcher);
